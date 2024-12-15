@@ -1,10 +1,10 @@
 {
-  "compilerOptions": {
-    "target": "ES2022",
-    "module": "NodeNext",
-    "esModuleInterop": true,
-    "strict": true,
-    "rootDir": "src",
-    "outDir": "built"
-  },
+    "compilerOptions": {
+        "target": "ES2022",
+        "module": "NodeNext",
+        "esModuleInterop": true,
+        "strict": true,
+        "rootDir": "src",
+        "outDir": "built"
+    },
 }
