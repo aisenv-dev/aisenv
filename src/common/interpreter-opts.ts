@@ -35,4 +35,8 @@ export class SimpleInterpreterOpts implements InterpreterOpts {
     public log(type: string, params: Record<string, any>): void {
         // do nothing
     }
+
+    public close(): void {
+        this.rl.close();
+    }
 }

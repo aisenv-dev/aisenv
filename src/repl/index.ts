@@ -26,7 +26,7 @@ export async function repl() {
         }
     }
 
-    rl.close();
+    opts.close();
 }
 
 async function getAst(rl: readline.Interface) {
