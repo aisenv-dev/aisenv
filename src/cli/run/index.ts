@@ -1,8 +1,7 @@
 import * as fs from 'node:fs/promises';
-import { Interpreter, Parser, values } from '@syuilo/aiscript';
+import { Interpreter, Parser } from '@syuilo/aiscript';
 import { SimpleInterpreterOpts } from '../../common/interpreter-opts.js';
-import { resolveConfig } from '../../common/config.js';
-import { Config } from '../../api/config.js';
+import { collectConsts, resolveConfig } from '../../common/config.js';
 
 export async function run(filename: string) {
     const config = await resolveConfig();
@@ -12,16 +11,4 @@ export async function run(filename: string) {
     const ast = Parser.parse(script);
     await interpreter.exec(ast);
     opts.close();
-}
-
-function collectConsts(config: Config): Record<string, values.Value> {
-    const addons = config.addons;
-    if (addons == null || addons.length == 0) {
-        return {};
-    }
-    const consts: Record<string, values.Value> = {};
-    for (const addon of addons) {
-        Object.assign(consts, addon.consts);
-    }
-    return consts;
 }
