@@ -10,18 +10,21 @@ export async function repl() {
     });
     const opts = new REPLInterpreterOpts(rl);
     let doNext = true;
-    const interpreter = new Interpreter({
-        'exit': values.FN_NATIVE((args) => {
-            opts.doLog = false;
-            doNext = false;
-        }),
-    }, opts);
+    const interpreter = new Interpreter(
+        {
+            exit: values.FN_NATIVE(() => {
+                opts.doLog = false;
+                doNext = false;
+            }),
+        },
+        opts,
+    );
 
     while (doNext) {
         try {
             const ast = await getAst(rl);
             await interpreter.exec(ast);
-        } catch(e) {
+        } catch (e) {
             console.error(e);
         }
     }
@@ -30,16 +33,16 @@ export async function repl() {
 }
 
 async function getAst(rl: readline.Interface) {
-	const script = await rl.question('>>> ');
+    const script = await rl.question('>>> ');
     return Parser.parse(script);
 }
 
 class REPLInterpreterOpts extends SimpleInterpreterOpts {
     public doLog = true;
 
-    public override log(type: string, params: Record<string, any>): void {
+    public log(type: string, params: Record<string, unknown>): void {
         if (this.doLog && type == 'end') {
-            console.log(valToString(params.val, true));
+            console.log(valToString(params.val as values.Value, true));
         }
     }
 }

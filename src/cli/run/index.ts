@@ -1,6 +1,6 @@
 import * as fs from 'node:fs/promises';
-import { Interpreter, Parser, values } from "@syuilo/aiscript";
-import { SimpleInterpreterOpts } from "../../common/interpreter-opts.js";
+import { Interpreter, Parser, values } from '@syuilo/aiscript';
+import { SimpleInterpreterOpts } from '../../common/interpreter-opts.js';
 import { resolveConfig } from '../../common/config.js';
 import { Config } from '../../api/config.js';
 
