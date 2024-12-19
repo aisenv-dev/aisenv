@@ -11,8 +11,9 @@
     },
     "scripts": {
         "dev": "tsx src/cli/index.ts",
-        "format": "prettier --write src/**/*.ts *.json *.js",
+        "format": "prettier --write src/**/*.ts tests/**/*.ts *.json *.js",
         "lint": "eslint --fix .",
+        "test": "vitest run",
         "build": "tsc"
     },
     "bin": {
@@ -29,7 +30,8 @@
         "prettier": "^3.4.2",
         "tsx": "^4.19.2",
         "typescript": "^5.7.2",
-        "typescript-eslint": "^8.18.1"
+        "typescript-eslint": "^8.18.1",
+        "vitest": "^2.1.8"
     },
     "dependencies": {
         "@syuilo/aiscript": "^0.19.0"
