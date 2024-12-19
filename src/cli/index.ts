@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 import { parseArgs } from 'node:util';
-import { repl } from './repl/index.js';
-import { run } from './run/index.js';
+import { repl } from './repl.js';
+import { run } from './run.js';
 
 const args = parseArgs({
     allowPositionals: true,

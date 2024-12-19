@@ -1,7 +1,7 @@
 import * as fs from 'node:fs/promises';
 import { Interpreter, Parser } from '@syuilo/aiscript';
-import { SimpleInterpreterOpts } from '../../common/interpreter-opts.js';
-import { collectConsts, resolveConfig } from '../../common/config.js';
+import { SimpleInterpreterOpts } from '../common/interpreter-opts.js';
+import { collectConsts, resolveConfig } from '../common/config.js';
 
 export async function run(filename: string) {
     const config = await resolveConfig();
