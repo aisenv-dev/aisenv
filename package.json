@@ -11,7 +11,7 @@
     },
     "scripts": {
         "dev": "tsx src/cli/index.ts",
-        "format": "prettier --write src/**/*.ts",
+        "format": "prettier --write src/**/*.ts *.json *.js",
         "lint": "eslint --fix .",
         "build": "tsc"
     },

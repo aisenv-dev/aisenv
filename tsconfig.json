@@ -9,5 +9,5 @@
         "outDir": "built/esm",
         "declaration": true,
         "declarationDir": "built/dts"
-    },
+    }
 }
