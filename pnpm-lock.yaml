@@ -22,6 +22,12 @@ importers:
         specifier: ^5.7.2
         version: 5.7.2
 
+  examples/hello-world:
+    devDependencies:
+      aisenv:
+        specifier: workspace:^
+        version: link:../..
+
 packages:
 
   '@esbuild/aix-ppc64@0.23.1':

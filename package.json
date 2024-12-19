@@ -3,13 +3,18 @@
     "version": "0.1.0",
     "description": "",
     "type": "module",
-    "main": "built/index.js",
+    "exports": {
+        ".": {
+            "import": "./built/esm/index.js",
+            "types": "./built/dts/index.d.ts"
+        }
+    },
     "scripts": {
         "dev": "tsx src/cli/index.ts",
         "build": "tsc"
     },
     "bin": {
-        "aisenv": "built/cli/index.js"
+        "aisenv": "built/esm/cli/index.js"
     },
     "keywords": [],
     "author": "Take-John",
