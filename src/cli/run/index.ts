@@ -1,6 +1,6 @@
 import * as fs from 'node:fs/promises';
 import { Interpreter, Parser } from "@syuilo/aiscript";
-import { SimpleInterpreterOpts } from "../common/interpreter-opts.js";
+import { SimpleInterpreterOpts } from "../../common/interpreter-opts.js";
 
 export async function run(filename: string) {
     const opts = new SimpleInterpreterOpts()

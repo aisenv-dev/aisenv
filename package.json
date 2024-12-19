@@ -5,11 +5,11 @@
     "type": "module",
     "main": "built/index.js",
     "scripts": {
-        "dev": "tsx src/index.ts",
+        "dev": "tsx src/cli/index.ts",
         "build": "tsc"
     },
     "bin": {
-        "aisenv": "built/index.js"
+        "aisenv": "built/cli/index.js"
     },
     "keywords": [],
     "author": "Take-John",

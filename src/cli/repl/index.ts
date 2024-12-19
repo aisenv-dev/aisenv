@@ -1,6 +1,6 @@
 import * as readline from 'node:readline/promises';
 import { Interpreter, Parser, values } from '@syuilo/aiscript';
-import { SimpleInterpreterOpts } from '../common/interpreter-opts.js';
+import { SimpleInterpreterOpts } from '../../common/interpreter-opts.js';
 import { valToString } from '@syuilo/aiscript/interpreter/util.js';
 
 export async function repl() {
