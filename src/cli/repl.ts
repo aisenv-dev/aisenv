@@ -4,11 +4,7 @@ import { SimpleInterpreterOpts } from '../common/interpreter-opts.js';
 import { valToString } from '@syuilo/aiscript/interpreter/util.js';
 
 export async function repl() {
-    const rl = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout,
-    });
-    const opts = new REPLInterpreterOpts(rl);
+    const opts = new REPLInterpreterOpts();
     let doNext = true;
     const interpreter = new Interpreter(
         {
@@ -22,14 +18,17 @@ export async function repl() {
 
     while (doNext) {
         try {
+            const rl = readline.createInterface({
+                input: process.stdin,
+                output: process.stdout,
+            });
             const ast = await getAst(rl);
+            rl.close();
             await interpreter.exec(ast);
         } catch (e) {
             console.error(e);
         }
     }
-
-    opts.close();
 }
 
 async function getAst(rl: readline.Interface) {

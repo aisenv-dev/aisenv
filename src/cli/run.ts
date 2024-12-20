@@ -10,5 +10,4 @@ export async function run(filename: string) {
     const script = await fs.readFile(filename, 'utf-8');
     const ast = Parser.parse(script);
     await interpreter.exec(ast);
-    opts.close();
 }
