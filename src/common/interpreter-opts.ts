@@ -13,19 +13,14 @@ export class SimpleInterpreterOpts implements InterpreterOpts {
 
     public readonly abortOnError: boolean = false;
 
-    private readonly rl: readline.Interface;
-
-    public constructor(rl?: readline.Interface) {
-        this.rl =
-            rl ??
-            readline.createInterface({
-                input: process.stdin,
-                output: process.stdout,
-            });
-    }
-
     public async in(q: string): Promise<string> {
-        return this.rl.question(q);
+        const rl = readline.createInterface({
+            input: process.stdin,
+            output: process.stdout,
+        });
+        const answer = await rl.question(q + ' ');
+        rl.close();
+        return answer;
     }
 
     public out(value: Value): void {
@@ -34,9 +29,5 @@ export class SimpleInterpreterOpts implements InterpreterOpts {
 
     public err(e: AiScriptError): void {
         console.error(e);
-    }
-
-    public close(): void {
-        this.rl.close();
     }
 }
