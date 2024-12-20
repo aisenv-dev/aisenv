@@ -1,8 +1,10 @@
 {
     "name": "aisenv",
     "version": "0.1.0",
-    "description": "",
+    "description": "Build your AiScript development environment.",
     "type": "module",
+    "repository": "https://github.com/aisenv-dev/aisenv.git",
+    "bugs": "https://github.com/aisenv-dev/aisenv/issues",
     "exports": {
         ".": {
             "import": "./built/esm/index.js",
