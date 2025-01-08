@@ -5,5 +5,5 @@ export interface Config {
     test?: {
         /** テストのファイル名。globパターンを使用できます。 */
         include: string[];
-    }
+    };
 }
