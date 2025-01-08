@@ -1,0 +1,3 @@
+@add(a: num, b: num): num {
+    a + b
+}

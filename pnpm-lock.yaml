@@ -52,6 +52,12 @@ importers:
         specifier: workspace:^
         version: link:../..
 
+  examples/testing:
+    devDependencies:
+      aisenv:
+        specifier: workspace:^
+        version: link:../..
+
 packages:
 
   '@esbuild/aix-ppc64@0.21.5':

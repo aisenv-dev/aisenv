@@ -1,0 +1,10 @@
+{
+    "name": "testing",
+    "type": "module",
+    "version": "0.1.0",
+    "author": "Take-John",
+    "license": "MIT",
+    "devDependencies": {
+        "aisenv": "workspace:^"
+    }
+}
