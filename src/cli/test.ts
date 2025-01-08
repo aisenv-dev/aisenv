@@ -4,6 +4,7 @@ import path from 'path';
 import { AiScriptError } from '@syuilo/aiscript/error.js';
 import { styleText } from 'node:util';
 import { resolveConfig } from '../common/config.js';
+import { glob } from 'glob';
 
 interface TestResultBase {
 	success: boolean;
@@ -186,7 +187,7 @@ export async function test() {
     if (config.test == null) {
         throw new TypeError('test not defined');
     }
-    for await (const name of fs.glob(config.test.include)) {
+    for (const name of await glob(config.test.include)) {
         const result = await runTest(name);
         if (result.success) {
             console.log(`${styleText('green', '✔')} ${name}`);

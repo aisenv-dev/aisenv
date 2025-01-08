@@ -36,6 +36,7 @@
         "vitest": "^2.1.8"
     },
     "dependencies": {
-        "@syuilo/aiscript": "^0.19.0"
+        "@syuilo/aiscript": "^0.19.0",
+        "glob": "^11.0.0"
     }
 }
