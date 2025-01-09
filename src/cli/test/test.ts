@@ -1,11 +1,11 @@
 import * as fs from 'fs/promises';
 import { Interpreter } from '@syuilo/aiscript';
 import path from 'path';
-import { styleText } from 'node:util';
 import { resolveConfig } from '../../common/config.js';
 import { glob } from 'glob';
 import { Context } from './context.js';
 import { TestResult } from './result.js';
+import { SimpleReporter } from './reporter.js';
 
 async function runTest(filename: string): Promise<TestResult> {
     const context = new Context();
@@ -62,27 +62,15 @@ export async function test() {
     if (config.test == null) {
         throw new TypeError('test not defined');
     }
+    const reporter = new SimpleReporter();
     let passed = true;
     for (const name of await glob(config.test.include)) {
         const result = await runTest(name);
-        if (result.success) {
-            console.log(`${styleText('green', '✔')} ${name}`);
-        } else {
+        if (!result.success) {
             passed = false;
-            console.log(`${styleText('red', '✘')} ${name}`);
-            for (const error of result.errors) {
-                if (error.cause != null) {
-                    console.log(
-                        styleText(
-                            'red',
-                            `  • ${error.message}:\n    ${error.cause}`,
-                        ),
-                    );
-                } else {
-                    console.log(styleText('red', `  • ${error.message}`));
-                }
-            }
         }
+        reporter.onTestFinish(name, result);
     }
+    reporter.onAllTestsFinish();
     return passed;
 }
