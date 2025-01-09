@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, test, vi } from 'vitest';
-import * as modTest from '../../../src/cli/test.js';
+import * as modTest from '../../../src/cli/test/test.js';
 import { Config } from '../../../src/api/config.js';
 import mockFs from 'mock-fs';
 
