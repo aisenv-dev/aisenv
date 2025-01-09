@@ -1,12 +1,5 @@
 import * as fs from 'fs/promises';
-import {
-    Parser,
-    Interpreter,
-    errors,
-    Ast,
-    values,
-    utils,
-} from '@syuilo/aiscript';
+import { Parser, Interpreter, Ast, values, utils } from '@syuilo/aiscript';
 import path from 'path';
 import { AiScriptError } from '@syuilo/aiscript/error.js';
 import { styleText } from 'node:util';
@@ -39,10 +32,7 @@ class Context {
     private readonly interpreter = new Interpreter(
         {},
         {
-            in: () =>
-                Promise.reject(
-                    new Error('Cannot use standard input during test'),
-                ),
+            in: async () => '',
             err: (e) => this.catch(this.currentExecuting, e),
         },
     );
@@ -205,14 +195,25 @@ async function runTest(filename: string): Promise<TestResult> {
     const imports: unknown = Interpreter.collectMetadata(ast)?.get('imports');
     if (imports !== undefined) {
         if (!Array.isArray(imports)) {
-            throw new errors.AiScriptRuntimeError('imports must be an array');
+            return {
+                success: false,
+                errors: [{ message: 'imports must be an array' }],
+            };
+        }
+
+        const importPaths: string[] = [];
+        for (const importPath of imports) {
+            if (typeof importPath != 'string') {
+                return {
+                    success: false,
+                    errors: [{ message: `Invalid import path: ${filename}` }],
+                };
+            }
+            importPaths.push(importPath);
         }
 
         const importScripts = await Promise.all(
-            imports.map(async (filename) => {
-                if (typeof filename != 'string') {
-                    throw new errors.AiScriptRuntimeError(`invalid import path: ${filename}`);
-                }
+            importPaths.map(async (filename) => {
                 const script = await fs.readFile(
                     path.resolve(dirname, filename),
                     'utf8',
@@ -236,11 +237,13 @@ export async function test() {
     if (config.test == null) {
         throw new TypeError('test not defined');
     }
+    let passed = true;
     for (const name of await glob(config.test.include)) {
         const result = await runTest(name);
         if (result.success) {
             console.log(`${styleText('green', '✔')} ${name}`);
         } else {
+            passed = false;
             console.log(`${styleText('red', '✘')} ${name}`);
             for (const error of result.errors) {
                 if (error.cause != null) {
@@ -256,4 +259,5 @@ export async function test() {
             }
         }
     }
+    return passed;
 }
