@@ -203,26 +203,26 @@ async function runTest(filename: string): Promise<TestResult> {
     }
 
     const imports: unknown = Interpreter.collectMetadata(ast)?.get('imports');
-    if (
-        !(
-            imports instanceof Array &&
-            imports.every((filename) => typeof filename == 'string')
-        )
-    ) {
-        throw new errors.AiScriptTypeError('Unexpected type of imports');
-    }
+    if (imports !== undefined) {
+        if (!Array.isArray(imports)) {
+            throw new errors.AiScriptRuntimeError('imports must be an array');
+        }
 
-    const importScripts = await Promise.all(
-        imports.map(async (filename) => {
-            const script = await fs.readFile(
-                path.resolve(dirname, filename),
-                'utf8',
-            );
-            return [filename, script] as const;
-        }),
-    );
-    for (const [filename, script] of importScripts) {
-        await context.runScript(filename, script);
+        const importScripts = await Promise.all(
+            imports.map(async (filename) => {
+                if (typeof filename != 'string') {
+                    throw new errors.AiScriptRuntimeError(`invalid import path: ${filename}`);
+                }
+                const script = await fs.readFile(
+                    path.resolve(dirname, filename),
+                    'utf8',
+                );
+                return [filename, script] as const;
+            }),
+        );
+        for (const [filename, script] of importScripts) {
+            await context.runScript(filename, script);
+        }
     }
 
     await context.run(filename, ast);
