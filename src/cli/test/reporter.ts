@@ -1,8 +1,8 @@
 import { styleText } from "util";
 import { TestFileResult } from "./types.js";
 
-const TEXT_CHECK = styleText('green', '✔');
-const TEXT_CROSS = styleText('red', '✘');
+const TEXT_CHECK = styleText('green', styleText('bold', '🗸'));
+const TEXT_CROSS = styleText('red', styleText('bold', '✗'));
 
 export class SimpleReporter {
     private passedFiles = 0;
