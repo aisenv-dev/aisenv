@@ -27,7 +27,10 @@ switch (subcommand) {
         break;
     }
     case 'test': {
-        await test();
+        const result = await test();
+        if (!result) {
+            process.exit(1);
+        }
         break;
     }
     default: {

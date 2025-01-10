@@ -20,7 +20,7 @@ async function runTest(filename: string): Promise<TestFileResult> {
     };
 }
 
-export async function test() {
+export async function test(): Promise<boolean> {
     const config = await resolveConfig();
     if (config.test == null) {
         throw new TypeError('test not defined');
