@@ -30,7 +30,7 @@ export class TestFileError extends Error {
 
 export interface TestCase {
     readonly name: string;
-    readonly err: boolean;
+    readonly shouldAbort: boolean;
     readonly fn: values.VFn;
 }
 
