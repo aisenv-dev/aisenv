@@ -3,6 +3,7 @@
 import { parseArgs } from 'node:util';
 import { repl } from './repl.js';
 import { run } from './run.js';
+import { test } from './test/test.js';
 
 const args = parseArgs({
     allowPositionals: true,
@@ -23,6 +24,13 @@ switch (subcommand) {
             process.exit(2);
         }
         await run(filename);
+        break;
+    }
+    case 'test': {
+        const result = await test();
+        if (!result) {
+            process.exit(1);
+        }
         break;
     }
     default: {

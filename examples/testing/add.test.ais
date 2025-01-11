@@ -1,0 +1,14 @@
+### imports [
+    './add.ais'
+]
+
+@assert_eq(left: any, right: any): void {
+    if (left != right) {
+        Core:abort(`assertion failed: left = {left}, right = {right}`)
+    }
+}
+
+#[test]
+@addTest() {
+    assert_eq(2 + 3, 5)
+}
