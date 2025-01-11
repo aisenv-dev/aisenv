@@ -115,7 +115,7 @@ describe('test', () => {
         }));
         mockFs({
             'main.test.ais': `
-                #[test "err"]
+                #[test "should_abort"]
                 @should_fail() {
                     Core:abort("err")
                 }
@@ -132,7 +132,7 @@ describe('test', () => {
         }));
         mockFs({
             'main.test.ais': `
-                #[test "err"]
+                #[test "should_abort"]
                 @should_fail() {}
             `,
         });

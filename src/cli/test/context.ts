@@ -25,7 +25,7 @@ export class Context {
     public async executeTestCase(testCase: TestCase): Promise<TestCaseResult> {
         return {
             name: testCase.name,
-            result: await this.executeTest(testCase.fn, testCase.err),
+            result: await this.executeTest(testCase.fn, testCase.shouldAbort),
         };
     }
 
@@ -126,17 +126,17 @@ export class Context {
             if (value.type != 'fn') {
                 throw new TestFileError(this.filename, `\`${name}\` is ${value.type}, but has 'test' attribute`);
             }
-            let err = false;
+            let shouldAbort = false;
             if (attr.value.type == 'str') {
-                if (attr.value.value == 'err') {
-                    err = true;
+                if (attr.value.value == 'should_abort') {
+                    shouldAbort = true;
                 } else {
                     throw new TestFileError(this.filename, `Unexpected test attribute: ${attr.value}, function: \`${name}\``);
                 }
             } else if (attr.value.type != 'bool' || !attr.value.value) {
                 throw new TestFileError(this.filename, `Unexpected test attribute value: ${utils.reprValue(attr.value)}`);
             }
-            return { name, err, fn: value };
+            return { name, shouldAbort, fn: value };
         }
     }
 }
