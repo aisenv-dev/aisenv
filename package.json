@@ -3,7 +3,10 @@
     "version": "0.3.0",
     "description": "Build your AiScript development environment.",
     "type": "module",
-    "repository": "https://github.com/aisenv-dev/aisenv.git",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/aisenv-dev/aisenv.git"
+    },
     "bugs": "https://github.com/aisenv-dev/aisenv/issues",
     "exports": {
         ".": {
