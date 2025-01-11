@@ -21,6 +21,12 @@
     "bin": {
         "aisenv": "built/esm/cli/index.js"
     },
+    "files": [
+        "package.json",
+        "README.md",
+        "LICENSE",
+        "built"
+    ],
     "keywords": [],
     "author": "Take-John",
     "license": "MIT",
