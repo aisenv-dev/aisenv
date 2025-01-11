@@ -15,6 +15,7 @@
         "dev": "tsx src/cli/index.ts",
         "format": "prettier --write src/**/*.ts tests/**/*.ts *.json *.js",
         "lint": "eslint --fix .",
+        "typecheck": "tsc --noEmit",
         "test": "vitest run",
         "build": "tsc"
     },
