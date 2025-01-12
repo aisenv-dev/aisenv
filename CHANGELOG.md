@@ -2,6 +2,8 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).  
 All dates are expressed in YYYY-MM-DD format in JST (UTC+9).
 
+## [0.3.2] - 2025-01-12
+
 ## [0.3.1] - 2025-01-12
 
 ## [0.3.0] - 2025-01-11
