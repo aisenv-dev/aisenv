@@ -10,7 +10,7 @@ All dates are expressed in YYYY-MM-DD format in JST (UTC+9).
 ### Added
 - npm と GitHub リポジトリに相互リンク作成
 
-## [0.0.1] - 2024-12-19
+## [0.1.0] - 2024-12-19
 ### Added
 - REPL (Read-Eval-Print Loop) ツール
 - run コマンド
