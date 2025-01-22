@@ -12,7 +12,10 @@
         "test": "pnpm --filter=aisenv run test",
         "build": "pnpm --filter=aisenv run build",
         "root:format": "prettier --write *.{js,json}",
-        "root:format-check": "prettier --write *.{js,json}"
+        "root:format-check": "prettier --write *.{js,json}",
+        "docs:dev": "pnpm --filter=aisenv-docs docs:dev",
+        "docs:build": "pnpm --filter=aisenv-docs docs:build",
+        "docs:preview": "pnpm --filter=aisenv-docs docs:preview"
     },
     "author": "Take-John",
     "license": "MIT",
