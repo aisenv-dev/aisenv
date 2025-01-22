@@ -1,57 +1,26 @@
 {
-    "name": "aisenv",
-    "version": "0.3.2",
-    "description": "Build your AiScript development environment.",
+    "name": "aisenv-monorepo",
+    "description": "The monorepo of aisenv.",
     "type": "module",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/aisenv-dev/aisenv.git"
-    },
-    "bugs": "https://github.com/aisenv-dev/aisenv/issues",
-    "exports": {
-        ".": {
-            "import": "./built/esm/index.js",
-            "types": "./built/dts/index.d.ts"
-        }
-    },
+    "private": true,
     "scripts": {
-        "dev": "tsx src/cli/index.ts",
-        "format": "prettier --write src/**/*.ts tests/**/*.ts *.json *.js",
-        "format-check": "prettier --check src/**/*.ts tests/**/*.ts *.json *.js",
-        "lint": "eslint --fix .",
-        "lint-check": "eslint .",
-        "typecheck": "tsc --noEmit",
-        "test": "vitest run",
-        "build": "tsc"
+        "format": "pnpm run root:format && pnpm --filter=aisenv format",
+        "format-check": "pnpm run root:format-check && pnpm --filter=aisenv format-check",
+        "lint": "pnpm --filter=aisenv run lint",
+        "lint-check": "pnpm --filter=aisenv run lint-check",
+        "typecheck": "pnpm --filter=aisenv run typecheck",
+        "test": "pnpm --filter=aisenv run test",
+        "build": "pnpm --filter=aisenv run build",
+        "root:format": "prettier --write *.{js,json}",
+        "root:format-check": "prettier --write *.{js,json}"
     },
-    "bin": {
-        "aisenv": "built/esm/cli/index.js"
-    },
-    "files": [
-        "package.json",
-        "README.md",
-        "LICENSE",
-        "built"
-    ],
-    "keywords": [],
     "author": "Take-John",
     "license": "MIT",
     "devDependencies": {
         "@eslint/js": "^9.17.0",
-        "@types/mock-fs": "^4.13.4",
-        "@types/node": "^22.10.2",
-        "@vitest/coverage-v8": "2.1.8",
         "eslint": "^9.17.0",
         "eslint-config-prettier": "^9.1.0",
-        "mock-fs": "^5.4.1",
         "prettier": "^3.4.2",
-        "tsx": "^4.19.2",
-        "typescript": "^5.7.2",
-        "typescript-eslint": "^8.18.1",
-        "vitest": "^2.1.8"
-    },
-    "dependencies": {
-        "@syuilo/aiscript": "^0.19.0",
-        "glob": "^11.0.0"
+        "typescript-eslint": "^8.18.1"
     }
 }
