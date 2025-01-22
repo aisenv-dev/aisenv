@@ -7,6 +7,42 @@ settings:
 importers:
 
   .:
+    devDependencies:
+      '@eslint/js':
+        specifier: ^9.17.0
+        version: 9.17.0
+      eslint:
+        specifier: ^9.17.0
+        version: 9.17.0
+      eslint-config-prettier:
+        specifier: ^9.1.0
+        version: 9.1.0(eslint@9.17.0)
+      prettier:
+        specifier: ^3.4.2
+        version: 3.4.2
+      typescript-eslint:
+        specifier: ^8.18.1
+        version: 8.18.1(eslint@9.17.0)(typescript@5.7.2)
+
+  examples/custom-addon:
+    devDependencies:
+      aisenv:
+        specifier: workspace:^
+        version: link:../../packages/aisenv
+
+  examples/hello-world:
+    devDependencies:
+      aisenv:
+        specifier: workspace:^
+        version: link:../../packages/aisenv
+
+  examples/testing:
+    devDependencies:
+      aisenv:
+        specifier: workspace:^
+        version: link:../../packages/aisenv
+
+  packages/aisenv:
     dependencies:
       '@syuilo/aiscript':
         specifier: ^0.19.0
@@ -15,9 +51,6 @@ importers:
         specifier: ^11.0.0
         version: 11.0.0
     devDependencies:
-      '@eslint/js':
-        specifier: ^9.17.0
-        version: 9.17.0
       '@types/mock-fs':
         specifier: ^4.13.4
         version: 4.13.4
@@ -27,48 +60,18 @@ importers:
       '@vitest/coverage-v8':
         specifier: 2.1.8
         version: 2.1.8(vitest@2.1.8(@types/node@22.10.2))
-      eslint:
-        specifier: ^9.17.0
-        version: 9.17.0
-      eslint-config-prettier:
-        specifier: ^9.1.0
-        version: 9.1.0(eslint@9.17.0)
       mock-fs:
         specifier: ^5.4.1
         version: 5.4.1
-      prettier:
-        specifier: ^3.4.2
-        version: 3.4.2
       tsx:
         specifier: ^4.19.2
         version: 4.19.2
       typescript:
         specifier: ^5.7.2
         version: 5.7.2
-      typescript-eslint:
-        specifier: ^8.18.1
-        version: 8.18.1(eslint@9.17.0)(typescript@5.7.2)
       vitest:
         specifier: ^2.1.8
         version: 2.1.8(@types/node@22.10.2)
-
-  examples/custom-addon:
-    devDependencies:
-      aisenv:
-        specifier: workspace:^
-        version: link:../..
-
-  examples/hello-world:
-    devDependencies:
-      aisenv:
-        specifier: workspace:^
-        version: link:../..
-
-  examples/testing:
-    devDependencies:
-      aisenv:
-        specifier: workspace:^
-        version: link:../..
 
 packages:
 
@@ -1286,8 +1289,8 @@ packages:
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
 
-  vite@5.4.11:
-    resolution: {integrity: sha512-c7jFQRklXua0mTzneGW9QVyxFjUgwcihC4bXEtujIo2ouWCe1Ajt/amn2PCxYnhYfd5k09JX3SB7OYWFKYqj8Q==}
+  vite@5.4.14:
+    resolution: {integrity: sha512-EK5cY7Q1D8JNhSaPKVK4pwBFvaTmZxEnoKXLG/U9gmdDcihQGNzFlgIvaxezFR4glP1LsuiedwMBqCXH3wZccA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -1805,13 +1808,13 @@ snapshots:
       chai: 5.1.2
       tinyrainbow: 1.2.0
 
-  '@vitest/mocker@2.1.8(vite@5.4.11(@types/node@22.10.2))':
+  '@vitest/mocker@2.1.8(vite@5.4.14(@types/node@22.10.2))':
     dependencies:
       '@vitest/spy': 2.1.8
       estree-walker: 3.0.3
       magic-string: 0.30.17
     optionalDependencies:
-      vite: 5.4.11(@types/node@22.10.2)
+      vite: 5.4.14(@types/node@22.10.2)
 
   '@vitest/pretty-format@2.1.8':
     dependencies:
@@ -2477,7 +2480,7 @@ snapshots:
       debug: 4.4.0
       es-module-lexer: 1.5.4
       pathe: 1.1.2
-      vite: 5.4.11(@types/node@22.10.2)
+      vite: 5.4.14(@types/node@22.10.2)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -2489,7 +2492,7 @@ snapshots:
       - supports-color
       - terser
 
-  vite@5.4.11(@types/node@22.10.2):
+  vite@5.4.14(@types/node@22.10.2):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.49
@@ -2501,7 +2504,7 @@ snapshots:
   vitest@2.1.8(@types/node@22.10.2):
     dependencies:
       '@vitest/expect': 2.1.8
-      '@vitest/mocker': 2.1.8(vite@5.4.11(@types/node@22.10.2))
+      '@vitest/mocker': 2.1.8(vite@5.4.14(@types/node@22.10.2))
       '@vitest/pretty-format': 2.1.8
       '@vitest/runner': 2.1.8
       '@vitest/snapshot': 2.1.8
@@ -2517,7 +2520,7 @@ snapshots:
       tinyexec: 0.3.1
       tinypool: 1.0.2
       tinyrainbow: 1.2.0
-      vite: 5.4.11(@types/node@22.10.2)
+      vite: 5.4.14(@types/node@22.10.2)
       vite-node: 2.1.8(@types/node@22.10.2)
       why-is-node-running: 2.3.0
     optionalDependencies:

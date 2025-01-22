@@ -34,7 +34,7 @@ jobs:
         run: pnpm run build
 
       - name: Publish
-        run: pnpm publish --no-git-checks --access public
+        run: pnpm --filter=aisenv publish --no-git-checks --access=public
         env:
           NPM_CONFIG_PROVENANCE: true
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

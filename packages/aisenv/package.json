@@ -1,0 +1,52 @@
+{
+    "name": "aisenv",
+    "version": "0.3.2",
+    "description": "Build your AiScript development environment.",
+    "type": "module",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/aisenv-dev/aisenv.git"
+    },
+    "bugs": "https://github.com/aisenv-dev/aisenv/issues",
+    "exports": {
+        ".": {
+            "import": "./built/esm/index.js",
+            "types": "./built/dts/index.d.ts"
+        }
+    },
+    "scripts": {
+        "dev": "tsx src/cli/index.ts",
+        "format": "prettier --write src/**/*.ts tests/**/*.ts *.json *.js",
+        "format-check": "prettier --check src/**/*.ts tests/**/*.ts *.json *.js",
+        "lint": "eslint --fix .",
+        "lint-check": "eslint .",
+        "typecheck": "tsc --noEmit",
+        "test": "vitest run",
+        "build": "tsc"
+    },
+    "bin": {
+        "aisenv": "built/esm/cli/index.js"
+    },
+    "files": [
+        "package.json",
+        "README.md",
+        "LICENSE",
+        "built"
+    ],
+    "keywords": [],
+    "author": "Take-John",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/mock-fs": "^4.13.4",
+        "@types/node": "^22.10.2",
+        "@vitest/coverage-v8": "2.1.8",
+        "mock-fs": "^5.4.1",
+        "tsx": "^4.19.2",
+        "typescript": "^5.7.2",
+        "vitest": "^2.1.8"
+    },
+    "dependencies": {
+        "@syuilo/aiscript": "^0.19.0",
+        "glob": "^11.0.0"
+    }
+}
