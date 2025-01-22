@@ -4,25 +4,31 @@ import { defineConfig } from 'vitepress';
 export default defineConfig({
     title: 'aisenv Docs',
     description: 'Build your AiScript development environment.',
+    srcDir: 'src',
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
-        nav: [
-            { text: 'Home', link: '/' },
-            { text: 'Examples', link: '/markdown-examples' },
-        ],
+        nav: [{ text: 'ガイド', link: '/guide/introduction' }],
 
         sidebar: [
             {
-                text: 'Examples',
+                text: 'ガイド',
                 items: [
-                    { text: 'Markdown Examples', link: '/markdown-examples' },
-                    { text: 'Runtime API Examples', link: '/api-examples' },
+                    { text: 'aisenvについて', link: '/guide/introduction' },
+                    { text: 'はじめる', link: '/guide/starting' },
+                    { text: 'テスト', link: '/guide/testing' },
+                    { text: '拡張機能', link: '/guide/addons' },
                 ],
             },
         ],
 
         socialLinks: [
-            { icon: 'github', link: 'https://github.com/vuejs/vitepress' },
+            { icon: 'github', link: 'https://github.com/aisenv-dev/aisenv' },
         ],
+
+        editLink: {
+            pattern:
+                'https://github.com/aisenv-dev/aisenv/edit/main/docs/src/:path',
+            text: 'GitHubで編集',
+        },
     },
 });
