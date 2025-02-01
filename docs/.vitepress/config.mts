@@ -9,6 +9,8 @@ const aiscriptTmlanguage = JSON.parse(
 export default defineConfig({
     title: 'aisenv Docs',
     description: 'Build your AiScript development environment.',
+    lang: 'ja-JP',
+    base: '/aisenv/',
     srcDir: 'src',
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
