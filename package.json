@@ -4,15 +4,18 @@
     "type": "module",
     "private": true,
     "scripts": {
-        "format": "pnpm run root:format && pnpm --filter=aisenv format",
-        "format-check": "pnpm run root:format-check && pnpm --filter=aisenv format-check",
+        "format": "pnpm run root:format && pnpm --filter=aisenv --filter=docs format",
+        "format-check": "pnpm run root:format-check && pnpm --filter=aisenv --filter=docs format-check",
         "lint": "pnpm --filter=aisenv run lint",
         "lint-check": "pnpm --filter=aisenv run lint-check",
         "typecheck": "pnpm --filter=aisenv run typecheck",
         "test": "pnpm --filter=aisenv run test",
         "build": "pnpm --filter=aisenv run build",
         "root:format": "prettier --write *.{js,json}",
-        "root:format-check": "prettier --write *.{js,json}"
+        "root:format-check": "prettier --write *.{js,json}",
+        "docs:dev": "pnpm --filter=docs docs:dev",
+        "docs:build": "pnpm --filter=docs docs:build",
+        "docs:preview": "pnpm --filter=docs docs:preview"
     },
     "author": "Take-John",
     "license": "MIT",
@@ -20,6 +23,7 @@
         "@eslint/js": "^9.17.0",
         "eslint": "^9.17.0",
         "eslint-config-prettier": "^9.1.0",
+        "globals": "^15.14.0",
         "prettier": "^3.4.2",
         "typescript-eslint": "^8.18.1"
     }

@@ -1,0 +1,21 @@
+{
+    "name": "docs",
+    "author": "Take-John",
+    "license": "MIT",
+    "private": true,
+    "type": "module",
+    "devDependencies": {
+        "vitepress": "^1.6.1"
+    },
+    "scripts": {
+        "format": "prettier --write \"!.vitepress/cache\" \"!.vitepress/cache\" **/*.{mts,json,js}",
+        "format-check": "prettier --check \"!.vitepress/cache\" \"!.vitepress/cache\" **/*.{mts,json,js}",
+        "install": "node scripts/download-aiscript-tmlanguage.js",
+        "docs:dev": "vitepress dev",
+        "docs:build": "vitepress build",
+        "docs:preview": "vitepress preview"
+    },
+    "config": {
+        "aiscript_tmlanguage_version": "v0.1.16"
+    }
+}
