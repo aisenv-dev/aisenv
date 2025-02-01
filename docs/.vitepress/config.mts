@@ -1,4 +1,9 @@
 import { defineConfig } from 'vitepress';
+import fs from 'node:fs/promises';
+
+const aiscriptTmlanguage = JSON.parse(
+    await fs.readFile('.aiscript-tmlanguage/aiscript.tmLanguage.json', 'utf-8'),
+);
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -30,5 +35,9 @@ export default defineConfig({
                 'https://github.com/aisenv-dev/aisenv/edit/main/docs/src/:path',
             text: 'GitHubで編集',
         },
+    },
+
+    markdown: {
+        languages: [aiscriptTmlanguage],
     },
 });
