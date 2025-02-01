@@ -4,8 +4,8 @@
     "type": "module",
     "private": true,
     "scripts": {
-        "format": "pnpm run root:format && pnpm --filter=aisenv --filter=aisenv-docs format",
-        "format-check": "pnpm run root:format-check && pnpm --filter=aisenv --filter=aisenv-docs format-check",
+        "format": "pnpm run root:format && pnpm --filter=aisenv --filter=docs format",
+        "format-check": "pnpm run root:format-check && pnpm --filter=aisenv --filter=docs format-check",
         "lint": "pnpm --filter=aisenv run lint",
         "lint-check": "pnpm --filter=aisenv run lint-check",
         "typecheck": "pnpm --filter=aisenv run typecheck",
@@ -13,9 +13,9 @@
         "build": "pnpm --filter=aisenv run build",
         "root:format": "prettier --write *.{js,json}",
         "root:format-check": "prettier --write *.{js,json}",
-        "docs:dev": "pnpm --filter=aisenv-docs docs:dev",
-        "docs:build": "pnpm --filter=aisenv-docs docs:build",
-        "docs:preview": "pnpm --filter=aisenv-docs docs:preview"
+        "docs:dev": "pnpm --filter=docs docs:dev",
+        "docs:build": "pnpm --filter=docs docs:build",
+        "docs:preview": "pnpm --filter=docs docs:preview"
     },
     "author": "Take-John",
     "license": "MIT",
