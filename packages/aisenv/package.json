@@ -1,6 +1,6 @@
 {
     "name": "aisenv",
-    "version": "0.3.2",
+    "version": "0.4.0",
     "description": "Build your AiScript development environment.",
     "type": "module",
     "repository": {
