@@ -5,6 +5,7 @@
     "author": "Take-John",
     "license": "MIT",
     "devDependencies": {
+        "@syuilo/aiscript": "^1.2.0",
         "aisenv": "workspace:^"
     }
 }
