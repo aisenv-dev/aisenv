@@ -46,8 +46,10 @@
         "typescript": "^5.9.3",
         "vitest": "^4.0.14"
     },
+    "peerDependencies": {
+        "@syuilo/aiscript": "^1.0.0"
+    },
     "dependencies": {
-        "@syuilo/aiscript": "^1.2.0",
         "glob": "^13.0.0"
     }
 }
