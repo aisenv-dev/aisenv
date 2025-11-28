@@ -21,10 +21,10 @@ Node.jsがインストールされていない場合は、
 }
 ```
 
-### aisenvのインストール
+### aisenvとAiScriptのインストール
 LinuxまたはmacOSのターミナル、もしくはWindowsのPowershellで以下の内容を入力します。
 ```sh
-npm install --save-dev aisenv
+npm install --save-dev aisenv aiscript
 ```
 
 ### `aisenv.config.js`
