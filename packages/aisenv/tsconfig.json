@@ -9,7 +9,8 @@
         "rootDir": "src",
         "outDir": "built/esm",
         "declaration": true,
-        "declarationDir": "built/dts"
+        "declarationDir": "built/dts",
+        "types": ["node"]
     },
     "include": ["src/**/*.ts"]
 }
