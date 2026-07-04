@@ -3,9 +3,10 @@ import { glob } from 'glob';
 import { TestFileExecuted, TestFileResult } from './types.js';
 import { SimpleReporter } from './reporter.js';
 import { Context } from './context.js';
+import { Config } from '../../api/config.js';
 
-async function runTest(filename: string): Promise<TestFileResult> {
-    const context = new Context(filename);
+async function runTest(filename: string, config: Config): Promise<TestFileResult> {
+    const context = new Context(filename, config);
     const testFile = await context.prepareTestFile();
     if (testFile.state == 'error') {
         return {
@@ -28,7 +29,7 @@ export async function test(): Promise<boolean> {
     const reporter = new SimpleReporter();
     let passed = true;
     for (const name of await glob(config.test.include)) {
-        const result = await runTest(name);
+        const result = await runTest(name, config);
         if (result.result.state != 'executed' || result.result.children.some((result) => !result.result.passed)) {
             passed = false;
         }
