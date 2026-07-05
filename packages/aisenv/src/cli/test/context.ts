@@ -3,13 +3,18 @@ import path from 'path';
 import { Ast, Interpreter, Parser, utils, values } from "@syuilo/aiscript";
 import { TestCase, TestCaseResult, TestFailure, TestPassed, TestResult } from './types.js';
 import { TestFileError, TestFileReady } from './types.js';
+import { Config } from '../../api/config.js';
+import { collectConsts } from '../../common/config.js';
 
 export class Context {
-    private readonly interpreter = new Interpreter({});
+    private readonly interpreter: Interpreter;
 
     public constructor(
-        public readonly filename: string
-    ) {}
+        public readonly filename: string,
+        config: Config,
+    ) {
+        this.interpreter = new Interpreter(collectConsts(config));
+    }
 
     public async prepareTestFile(): Promise<TestFileReady | TestFileError> {
         try {

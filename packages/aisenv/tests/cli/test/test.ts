@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, test, vi } from 'vitest';
 import * as modTest from '../../../src/cli/test/test.js';
 import { Config } from '../../../src/api/config.js';
 import mockFs from 'mock-fs';
+import { values } from '@syuilo/aiscript';
 
 vi.mock('node:url', async () => {
     return {
@@ -17,8 +18,10 @@ const mockResolveConfig = vi.hoisted(() =>
     vi.fn<typeof import('../../../src/common/config.js').resolveConfig>(),
 );
 
-vi.mock('../../../src/common/config.js', async () => {
+vi.mock('../../../src/common/config.js', async (importOriginal) => {
+    const original = await importOriginal<object>();
     return {
+        ...original,
         resolveConfig: mockResolveConfig,
     };
 });
@@ -274,6 +277,51 @@ describe('test', () => {
             const result = await modTest.test();
             expect(result).toBe(false);
             expect(mockResolveConfig).toHaveBeenCalledOnce();
+        });
+    });
+
+    describe('addons', () => {
+        test('addon variables defined', async () => {
+            const customFn = vi.fn().mockReturnValueOnce(values.NULL);
+            mockResolveConfig.mockImplementationOnce(async () => ({
+                test: { include: ['*.test.ais'] },
+                addons: [
+                    {
+                        name: 'custom',
+                        consts: { custom_fn: values.FN_NATIVE(customFn) },
+                    },
+                ],
+            }));
+            mockFs({
+                'main.test.ais': 'custom_fn()',
+            });
+            const result = await modTest.test();
+            expect(result).toBe(true);
+            expect(mockResolveConfig).toHaveBeenCalledOnce();
+            expect(customFn).toHaveBeenCalledOnce();
+        });
+
+        test('addon variables defined in imported script', async () => {
+            const customFn = vi.fn().mockReturnValueOnce(values.NULL);
+            mockResolveConfig.mockImplementationOnce(async () => ({
+                test: { include: ['*.test.ais'] },
+                addons: [
+                    {
+                        name: 'custom',
+                        consts: { custom_fn: values.FN_NATIVE(customFn) },
+                    },
+                ],
+            }));
+            mockFs({
+                'main.ais': 'custom_fn()',
+                'main.test.ais': `
+                    ### imports ['main.ais']
+                `,
+            });
+            const result = await modTest.test();
+            expect(result).toBe(true);
+            expect(mockResolveConfig).toHaveBeenCalledOnce();
+            expect(customFn).toHaveBeenCalledOnce();
         });
     });
 });
