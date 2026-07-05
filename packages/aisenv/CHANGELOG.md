@@ -2,7 +2,12 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).  
 All dates are expressed in YYYY-MM-DD format in JST (UTC+9).
 
-## [0.4.0]
+## [0.4.1] - 2026-07-05
+### Fixed
+- テスト時に拡張機能の定数が注入されていなかった問題を修正
+
+## [0.4.0] - 2025-11-28
+### Changed
 - AiScript のバージョンを 1 とし、ユーザーが AiScript のインストールをするように
 
 ## [0.3.2] - 2025-01-12
