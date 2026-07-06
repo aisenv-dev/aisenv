@@ -1,11 +1,12 @@
 {
     "name": "aisenv",
-    "version": "0.4.1",
+    "version": "0.4.2",
     "description": "Build your AiScript development environment.",
     "type": "module",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/aisenv-dev/aisenv.git"
+        "url": "git+https://github.com/aisenv-dev/aisenv.git",
+        "directory": "packages/aisenv"
     },
     "bugs": "https://github.com/aisenv-dev/aisenv/issues",
     "exports": {
